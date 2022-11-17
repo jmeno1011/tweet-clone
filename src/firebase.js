@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCnCAitYibBhUSdcCaLviOmyS_DucGKXts",
-  authDomain: "tweet-clone-f7e83.firebaseapp.com",
-  projectId: "tweet-clone-f7e83",
-  storageBucket: "tweet-clone-f7e83.appspot.com",
-  messagingSenderId: "995381975606",
-  appId: "1:995381975606:web:b308a9806362f9df25d697",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGEING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 // Initialize Firebase
