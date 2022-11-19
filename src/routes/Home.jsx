@@ -1,7 +1,9 @@
 import Tweet from "component/Tweet";
 import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
-import { dbService } from "firebaseInit";
+import { ref, uploadString } from "firebase/storage";
+import { dbService, storageService } from "firebaseInit";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function Home({ userObj }) {
   const [tweet, setTweet] = useState("");
@@ -33,13 +35,18 @@ function Home({ userObj }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const collectionRef = collection(dbService, "tweets");
-    await addDoc(collectionRef, {
-      text: tweet,
-      createdAt: Date.now(),
-      creatorId: userObj.uid,
-    });
-    setTweet("");
+    const storageRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+
+    const response = await uploadString(storageRef, attachment, "data_url");
+    console.log(response);
+
+    // const collectionRef = collection(dbService, "tweets");
+    // await addDoc(collectionRef, {
+    //   text: tweet,
+    //   createdAt: Date.now(),
+    //   creatorId: userObj.uid,
+    // });
+    // setTweet("");
   };
   const onChange = (e) => {
     const {
@@ -58,6 +65,7 @@ function Home({ userObj }) {
       const {
         currentTarget: { result },
       } = finishedEvent;
+      console.log(result);
       setAttachment(result);
     };
     reader.readAsDataURL(theFile);
