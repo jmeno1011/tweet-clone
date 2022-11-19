@@ -45,6 +45,14 @@ function Tweet({ tweetObj, isOwner }) {
       ) : (
         <>
           <h4>{tweetObj.text}</h4>
+          {tweetObj.attachmentUrl && (
+            <img
+              src={tweetObj.attachmentUrl}
+              height="50px"
+              width={"50px"}
+              alt=""
+            />
+          )}
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete Tweet</button>
