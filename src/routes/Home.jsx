@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 function Home({ userObj }) {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
+  const [attachment, setAttachment] = useState();
+
   const getTweet = async () => {
     const collectionRef = collection(dbService, "tweets");
     const dbTweets = await getDocs(collectionRef);
@@ -53,9 +55,15 @@ function Home({ userObj }) {
     const theFile = files[0];
     const reader = new FileReader();
     reader.onloadend = (finishedEvent) => {
-      console.log(finishedEvent);
+      const {
+        currentTarget: { result },
+      } = finishedEvent;
+      setAttachment(result);
     };
     reader.readAsDataURL(theFile);
+  };
+  const onClearAttachment = () => {
+    setAttachment(null);
   };
 
   return (
@@ -70,6 +78,12 @@ function Home({ userObj }) {
         />
         <input type={"file"} accept="image/*" onChange={onFileChange} />
         <input type={"submit"} value="tweet" />
+        {attachment && (
+          <div>
+            <img src={attachment} width="50px" height="50px" alt="" />
+            <button onClick={onClearAttachment}>Clear</button>
+          </div>
+        )}
       </form>
       <div>
         {tweets.map((tweet) => (
