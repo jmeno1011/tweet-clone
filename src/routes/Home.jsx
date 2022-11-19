@@ -36,7 +36,7 @@ function Home({ userObj }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     let attachmentUrl = "";
-    if (attachmentUrl != "") {
+    if (attachment !== "") {
       const storageRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
       await uploadString(storageRef, attachment, "data_url");
       attachmentUrl = await getDownloadURL(storageRef);
@@ -51,7 +51,7 @@ function Home({ userObj }) {
 
     await addDoc(collectionRef, tweetData);
     setTweet("");
-    setAttachment(null);
+    setAttachment("");
   };
   const onChange = (e) => {
     const {
