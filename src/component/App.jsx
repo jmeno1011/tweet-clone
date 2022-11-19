@@ -27,7 +27,7 @@ function App() {
       ) : (
         "Initializing..."
       )}
-      <footer>&copy; 2022 Tweet-clone </footer>
+      {/* <footer>&copy; 2022 Tweet-clone </footer> */}
     </>
   );
 }
