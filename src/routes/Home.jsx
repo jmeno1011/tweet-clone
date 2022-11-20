@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 function Home({ userObj }) {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState("");
 
   const getTweet = async () => {
     const collectionRef = collection(dbService, "tweets");
