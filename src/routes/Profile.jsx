@@ -32,19 +32,18 @@ function Profile({ userObj }) {
      });
    }
   */
-  const getMyTweet = async () => {
-    const collectionRef = collection(dbService, "tweets");
-    const q = query(
-      collectionRef,
-      where("creatorId", "==", userObj.uid),
-      orderBy("createdAt", "desc")
-    );
-    // const tweet = await getDocs(collectionRef);
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
-  };
+  // const getMyTweet = async () => {
+  //   const collectionRef = collection(dbService, "tweets");
+  //   const q = query(
+  //     collectionRef,
+  //     where("creatorId", "==", userObj.uid),
+  //     orderBy("createdAt", "desc")
+  //   );
+  //   const querySnapshot = await getDocs(q);
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.data());
+  //   });
+  // };
 
   const onChange = (e) => {
     const {
@@ -63,9 +62,9 @@ function Profile({ userObj }) {
     }
   };
 
-  useEffect(() => {
-    getMyTweet();
-  }, []);
+  // useEffect(() => {
+  //   getMyTweet();
+  // }, []);
   return (
     <div>
       <form onSubmit={onSubmit}>

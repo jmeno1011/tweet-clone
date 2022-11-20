@@ -1,3 +1,4 @@
+import { updateProfile } from "firebase/auth";
 import { authService } from "firebaseInit";
 import { useEffect, useState } from "react";
 import AppRouter from "./AppRouter";
@@ -12,9 +13,23 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) =>
+            updateProfile(user, { displayName: user.displayName }),
+        });
       } else {
         setIsLoggedIn(false);
+      }
+      if (user.displayName === null) {
+        const displayNme = user.email.split("@")[0];
+        setUserObj({
+          displayName: displayNme,
+          uid: user.uid,
+          updateProfile: (args) =>
+            updateProfile(user, { displayName: displayNme }),
+        });
       }
       setInit(true);
     });
