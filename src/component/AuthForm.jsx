@@ -75,6 +75,7 @@ function AuthForm() {
           onChange={onChange}
         />
         <input
+          className="formBtn"
           type={"submit"}
           value={newAccount ? "Create Account" : "Sign In"}
         />
