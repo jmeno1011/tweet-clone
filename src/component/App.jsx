@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       {init ? (
         <AppRouter
           isLoggedIn={isLoggedIn}
@@ -47,7 +47,7 @@ function App() {
         "Initializing..."
       )}
       <footer>&copy; 2022 Tweet-clone </footer>
-    </div>
+    </>
   );
 }
 

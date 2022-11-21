@@ -4,6 +4,7 @@ import {
 } from "firebase/auth";
 import { authService } from "firebaseInit";
 import { useState } from "react";
+import "./AuthForm.css";
 
 function AuthForm() {
   const [email, setEmail] = useState("");
