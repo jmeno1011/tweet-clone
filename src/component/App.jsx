@@ -20,15 +20,7 @@ function App() {
         });
       } else {
         setIsLoggedIn(false);
-      }
-      if (user.displayName === null) {
-        const displayNme = user.email.split("@")[0];
-        setUserObj({
-          displayName: displayNme,
-          uid: user.uid,
-          updateProfile: (args) =>
-            updateProfile(user, { displayName: displayNme }),
-        });
+        setUserObj(null);
       }
       setInit(true);
     });
@@ -44,7 +36,7 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       {init ? (
         <AppRouter
           isLoggedIn={isLoggedIn}
@@ -54,8 +46,8 @@ function App() {
       ) : (
         "Initializing..."
       )}
-      {/* <footer>&copy; 2022 Tweet-clone </footer> */}
-    </>
+      <footer>&copy; 2022 Tweet-clone </footer>
+    </div>
   );
 }
 

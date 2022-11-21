@@ -56,6 +56,7 @@ function AuthForm() {
     <>
       <form onSubmit={onSubmit}>
         <input
+          className="formInput"
           type={"text"}
           placeholder="Email"
           required
@@ -64,6 +65,7 @@ function AuthForm() {
           onChange={onChange}
         />
         <input
+          className="formInput"
           type={"password"}
           placeholder="Password"
           required

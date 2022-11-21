@@ -23,7 +23,7 @@ function Auth() {
   };
 
   return (
-    <div>
+    <div className="container">
       <AuthForm />
       <div>
         <button onClick={onSocialClick} name="google">

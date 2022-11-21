@@ -20,6 +20,7 @@ ul {
   padding: 0;
 }
 a {
+  color: #fff;
   text-decoration: none;
 }
 
@@ -27,4 +28,25 @@ a {
 ::before,
 ::after {
   box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  padding: 16px 0;
+  position: fixed;
+  bottom: 0;
+  color: #fff;
 }
