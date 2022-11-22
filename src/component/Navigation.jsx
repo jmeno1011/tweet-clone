@@ -4,7 +4,7 @@ import "./Navigation.css";
 
 function Navigation({ userObj }) {
   return (
-    <nav>
+    <nav className="nav-nav">
       <ul className="nav-ul">
         <li>
           <Link to={"/"}>

@@ -2,8 +2,9 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { dbService, storageService } from "firebaseInit";
 import { useState } from "react";
+import "./Tweet.css";
 
-function Tweet({ tweetObj, isOwner }) {
+function Tweet({ tweetObj, userName, isOwner }) {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
   const onDeleteClick = async () => {
@@ -48,7 +49,8 @@ function Tweet({ tweetObj, isOwner }) {
           <button onClick={toggleEditing}>Cancel</button>
         </>
       ) : (
-        <>
+        <div className="tweet">
+          <h3>@name : {userName}</h3>
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && (
             <img
@@ -64,7 +66,7 @@ function Tweet({ tweetObj, isOwner }) {
               <button onClick={toggleEditing}>Edit Tweet</button>
             </>
           )}
-        </>
+        </div>
       )}
     </div>
   );

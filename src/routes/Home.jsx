@@ -29,15 +29,23 @@ function Home({ userObj }) {
       setTweets(tweetArray);
     });
   }, []);
-
   return (
     <>
       <TweetFactory userObj={userObj} />
+      <hr
+        style={{
+          width: "100%",
+          marginBottom: 12,
+          border: 0,
+          borderBottom: "1px solid white",
+        }}
+      />
       <div>
         {tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
+            userName={userObj.displayName}
             isOwner={tweet.creatorId === userObj.uid}
           />
         ))}
