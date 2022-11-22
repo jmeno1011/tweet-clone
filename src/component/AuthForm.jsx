@@ -79,7 +79,7 @@ function AuthForm() {
           type={"submit"}
           value={newAccount ? "Create Account" : "Sign In"}
         />
-        {error}
+        <span>{error}</span>
       </form>
       <span className="toggle-link" onClick={toggleAccount}>
         {newAccount ? "Sign In" : "Create Account"}

@@ -4,6 +4,13 @@ form {
   flex-direction: column;
   gap: 8px;
 }
+form > span {
+  padding: 4px;
+  display: inline-flex;
+  justify-content: center;
+  color: red;
+  font-size: 0.875rem;
+}
 
 .formInput {
   width: 100%;
