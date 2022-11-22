@@ -81,7 +81,7 @@ function AuthForm() {
         />
         {error}
       </form>
-      <span onClick={toggleAccount}>
+      <span className="toggle-link" onClick={toggleAccount}>
         {newAccount ? "Sign In" : "Create Account"}
       </span>
     </>

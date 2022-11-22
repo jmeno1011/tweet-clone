@@ -5,6 +5,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { authService } from "firebaseInit";
+import { Icon } from "@iconify/react";
+import "./Auth.css";
 
 function Auth() {
   const onSocialClick = async (e) => {
@@ -24,13 +26,27 @@ function Auth() {
 
   return (
     <div className="container">
+      <div
+        style={{
+          padding: 16,
+          display: "flex",
+          color: "#04aaff",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "2.75rem",
+        }}
+      >
+        <Icon icon="mdi:twitter" />
+      </div>
       <AuthForm />
-      <div>
-        <button onClick={onSocialClick} name="google">
-          Continue with Google
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <button className="social-btn" onClick={onSocialClick} name="google">
+          <span>Continue with Google</span>
+          <Icon icon="mdi:google-plus" />
         </button>
-        <button onClick={onSocialClick} name="github">
-          Continue with Github
+        <button className="social-btn" onClick={onSocialClick} name="github">
+          <span>Continue with Github</span>
+          <Icon icon="mdi:github" />
         </button>
       </div>
     </div>

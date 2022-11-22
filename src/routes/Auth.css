@@ -1,0 +1,16 @@
+.social-btn {
+  padding: 6px 8px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 0.625rem;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+.social-btn > span {
+  margin-right: 4px;
+}
+.social-btn > svg {
+  font-size: 1.25rem;
+}
