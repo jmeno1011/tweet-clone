@@ -31,7 +31,7 @@ function Home({ userObj }) {
   }, []);
 
   return (
-    <div>
+    <>
       <TweetFactory userObj={userObj} />
       <div>
         {tweets.map((tweet) => (
@@ -42,7 +42,7 @@ function Home({ userObj }) {
           />
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

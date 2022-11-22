@@ -6,7 +6,7 @@ import Navigation from "./Navigation";
 
 function AppRouter({ isLoggedIn, userObj, refreshUser }) {
   return (
-    <>
+    <div className="container">
       {isLoggedIn && <Navigation userObj={userObj} />}
       <Routes>
         {isLoggedIn ? (
@@ -21,7 +21,7 @@ function AppRouter({ isLoggedIn, userObj, refreshUser }) {
           <Route path="/" element={<Auth />} />
         )}
       </Routes>
-    </>
+    </div>
   );
 }
 
