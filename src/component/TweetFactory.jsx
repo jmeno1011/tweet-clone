@@ -1,8 +1,10 @@
+import { Icon } from "@iconify/react";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { dbService, storageService } from "firebaseInit";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import "./TweetFactory.css";
 
 function TweetFactory({ userObj }) {
   const [tweet, setTweet] = useState("");
@@ -54,16 +56,31 @@ function TweetFactory({ userObj }) {
     setAttachment(null);
   };
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type={"text"}
-        placeholder="what's on your mind"
-        maxLength={120}
-        onChange={onChange}
-        value={tweet}
-      />
-      <input type={"file"} accept="image/*" onChange={onFileChange} />
-      <input type={"submit"} value="tweet" />
+    <form className="tweet-form" onSubmit={onSubmit}>
+      <div className="form-input">
+        <input
+          type={"text"}
+          placeholder="what's on your mind"
+          maxLength={120}
+          onChange={onChange}
+          value={tweet}
+        />
+      </div>
+      <div className="form-footer">
+        <div>
+          <label htmlFor="upload-file" className="upload-btn">
+            <Icon icon="ic:outline-broken-image" />
+          </label>
+          <input
+            type={"file"}
+            id="upload-file"
+            accept="image/*"
+            onChange={onFileChange}
+            style={{ display: "none" }}
+          />
+        </div>
+        <input className="tweet-btn" type={"submit"} value="tweet" />
+      </div>
       {attachment && (
         <div>
           <img src={attachment} width="50px" height="50px" alt="" />

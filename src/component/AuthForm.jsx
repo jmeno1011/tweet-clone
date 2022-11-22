@@ -55,7 +55,7 @@ function AuthForm() {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form className="auth-form" onSubmit={onSubmit}>
         <input
           className="formInput"
           type={"text"}
