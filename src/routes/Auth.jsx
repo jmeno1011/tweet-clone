@@ -31,12 +31,14 @@ function Auth() {
           padding: 16,
           display: "flex",
           color: "#04aaff",
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           fontSize: "2.75rem",
         }}
       >
         <Icon icon="mdi:twitter" />
+        <div style={{ fontSize: "2rem" }}>Log in to Twitter</div>
       </div>
       <AuthForm />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
