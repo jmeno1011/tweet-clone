@@ -5,21 +5,21 @@ import AppRouter from "./AppRouter";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
 
   useEffect(() => {
     // firebase 스스로 계정 변화 확인함
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
           updateProfile: (args) => updateProfile(user, args),
         });
       } else {
-        setIsLoggedIn(false);
+        // setIsLoggedIn(false);
         setUserObj(null);
       }
       setInit(true);
@@ -39,7 +39,7 @@ function App() {
     <>
       {init ? (
         <AppRouter
-          isLoggedIn={isLoggedIn}
+          isLoggedIn={Boolean(userObj)}
           userObj={userObj}
           refreshUser={refreshUser}
         />
