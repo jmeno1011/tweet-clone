@@ -7,9 +7,9 @@ import Navigation from "./Navigation";
 function AppRouter({ isLoggedIn, userObj, refreshUser }) {
   return (
     <>
-      {isLoggedIn && <Navigation userObj={userObj} />}
       <div className="container">
         <Routes>
+          {isLoggedIn && <Navigation userObj={userObj} />}
           {isLoggedIn ? (
             <>
               <Route path="/" element={<Home userObj={userObj} />} />
