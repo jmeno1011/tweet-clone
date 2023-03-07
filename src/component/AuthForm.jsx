@@ -2,8 +2,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { authService } from "firebaseInit";
 import { useState } from "react";
+import { authService } from "../firebaseInit";
 import "./AuthForm.css";
 
 function AuthForm() {

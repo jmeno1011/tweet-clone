@@ -1,10 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import Profile from "routes/Profile";
+// import Profile from "routes/Profile";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
+import Profile from "../routes/Profile";
+import { UserObj } from "./App";
 import Navigation from "./Navigation";
 
-function AppRouter({ isLoggedIn, userObj, refreshUser }) {
+type AppRouterProps = {
+  isLoggedIn: boolean;
+  userObj?: UserObj | null;
+  refreshUser: () => void;
+}
+
+function AppRouter({ isLoggedIn, userObj, refreshUser }: AppRouterProps) {
   return (
     <>
       <div className="container">

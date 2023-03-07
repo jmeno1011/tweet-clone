@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
-import { authService } from "firebaseInit";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authService } from "../firebaseInit";
 
 function Profile({ userObj, refreshUser }) {
   const navigate = useNavigate();

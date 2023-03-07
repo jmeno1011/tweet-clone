@@ -1,7 +1,7 @@
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
-import { dbService, storageService } from "firebaseInit";
 import { useState } from "react";
+import { dbService, storageService } from "../firebaseInit";
 import "./Tweet.css";
 
 function Tweet({ tweetObj, userName, isOwner }) {

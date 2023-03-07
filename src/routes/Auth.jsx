@@ -1,12 +1,12 @@
-import AuthForm from "component/AuthForm";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { authService } from "firebaseInit";
 import { Icon } from "@iconify/react";
 import "./Auth.css";
+import AuthForm from "../component/AuthForm";
+import { authService } from "../firebaseInit";
 
 function Auth() {
   const onSocialClick = async (e) => {

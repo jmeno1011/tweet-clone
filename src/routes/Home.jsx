@@ -1,8 +1,8 @@
-import Tweet from "component/Tweet";
-import TweetFactory from "component/TweetFactory";
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
-import { dbService } from "firebaseInit";
 import { useEffect, useState } from "react";
+import Tweet from "../component/Tweet";
+import TweetFactory from "../component/TweetFactory";
+import { dbService } from "../firebaseInit";
 
 function Home({ userObj }) {
   const [tweets, setTweets] = useState([]);
