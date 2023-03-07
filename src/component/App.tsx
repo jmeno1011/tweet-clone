@@ -4,9 +4,9 @@ import { authService } from "../firebaseInit";
 import AppRouter from "./AppRouter";
 
 export interface UserObj {
-  displayName?: string | null;
+  displayName: string | null;
   uid?: string;
-  updateProfile?: (profile: { displayName?: string }) => Promise<void>;
+  updateProfile: (profile: { displayName?: string }) => Promise<void>;
 }
 
 function App() {

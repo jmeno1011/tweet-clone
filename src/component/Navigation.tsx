@@ -2,8 +2,13 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import React from "react";
 import "./Navigation.css";
+import { UserObj } from "./App";
 
-function Navigation({ userObj }) {
+type NavigationProps = {
+  userObj?: UserObj|null;
+}
+
+function Navigation({ userObj }: NavigationProps) {
   return (
     <nav className="nav-nav">
       <ul className="nav-ul">

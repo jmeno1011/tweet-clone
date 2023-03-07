@@ -10,19 +10,21 @@ import AuthForm from "../component/AuthForm";
 import { authService } from "../firebaseInit";
 
 function Auth() {
-  const onSocialClick = async (e) => {
-    console.log(e.target.name);
+  const onSocialClick = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log(e.currentTarget.name);
     const {
-      target: { name },
+      currentTarget: { name },
     } = e;
-    let provider;
+    let provider : GoogleAuthProvider | GithubAuthProvider | null = null;
     if (name === "google") {
       provider = new GoogleAuthProvider();
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
-    const result = await signInWithPopup(authService, provider);
-    console.log(result);
+    if(provider){
+      const result = await signInWithPopup(authService, provider);
+      console.log(result);
+    }
   };
 
   return (

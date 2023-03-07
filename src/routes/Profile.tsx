@@ -1,27 +1,33 @@
 import { signOut } from "firebase/auth";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserObj } from "../component/App";
 import { authService } from "../firebaseInit";
 
-function Profile({ userObj, refreshUser }) {
+type ProfileProps = {
+  userObj?: UserObj | null;
+  refreshUser: () => void;
+}
+
+function Profile({ userObj, refreshUser }: ProfileProps) {
   const navigate = useNavigate();
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
+  const [newDisplayName, setNewDisplayName] = useState("");
   const onLogoutClick = () => {
     signOut(authService);
     navigate("/");
   };
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
     setNewDisplayName(value);
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (userObj.displayName !== newDisplayName) {
-      await userObj.updateProfile({
+    if (newDisplayName !== "") {
+      await userObj?.updateProfile({
         displayName: newDisplayName,
       });
       refreshUser();
@@ -35,7 +41,7 @@ function Profile({ userObj, refreshUser }) {
           type={"text"}
           placeholder="Display Name"
           onChange={onChange}
-          value={newDisplayName}
+          value={newDisplayName || ""}
         />
         <input type="submit" value={"Update Profile"} />
       </form>
