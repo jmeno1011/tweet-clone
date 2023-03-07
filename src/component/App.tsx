@@ -1,13 +1,12 @@
-import { updateProfile } from "firebase/auth";
-// import { authService } from "firebaseInit";
+import { updateProfile, User } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { authService } from "../firebaseInit";
 import AppRouter from "./AppRouter";
 
-export type UserObj = {
+export interface UserObj {
   displayName?: string | null;
-  uid?: String;
-  updateProfile: (args: any) => void;
+  uid?: string;
+  updateProfile?: (profile: { displayName?: string }) => Promise<void>;
 }
 
 function App() {
@@ -16,12 +15,12 @@ function App() {
 
   useEffect(() => {
     // firebase 스스로 계정 변화 확인함
-    authService.onAuthStateChanged((user: any) => {
+    authService.onAuthStateChanged((user: User | null) => {
       if (user) {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
-          updateProfile: (args) => updateProfile(user, args),
+          updateProfile: (profile) => updateProfile(user, profile),
         });
       } else {
         setUserObj(null);
@@ -32,11 +31,13 @@ function App() {
 
   const refreshUser = () => {
     const user = authService.currentUser;
-    setUserObj({
-      displayName: user?.displayName,
-      uid: user?.uid,
-      updateProfile: (args) => updateProfile(user!, args),
-    });
+    if (user) {
+      setUserObj({
+        displayName: user.displayName,
+        uid: user.uid,
+        updateProfile: (profile) => updateProfile(user, profile),
+      });
+    }
   };
 
   return (

@@ -1,6 +1,6 @@
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
-import { useState } from "react";
+import React, { useState } from "react";
 import { dbService, storageService } from "../firebaseInit";
 import "./Tweet.css";
 

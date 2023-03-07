@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { dbService, storageService } from "../firebaseInit";
-import { useState } from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TweetFactory.css";
 
