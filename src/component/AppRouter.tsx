@@ -4,6 +4,7 @@ import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import { UserObj } from "./App";
 import Navigation from "./Navigation";
+import React from "react";
 
 type AppRouterProps = {
   isLoggedIn: boolean;

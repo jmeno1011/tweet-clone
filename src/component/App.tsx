@@ -1,5 +1,5 @@
 import { updateProfile, User } from "firebase/auth";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { authService } from "../firebaseInit";
 import AppRouter from "./AppRouter";
 
