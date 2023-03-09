@@ -1,9 +1,15 @@
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { UserObj } from "../component/App";
 import Tweet from "../component/Tweet";
 import TweetFactory from "../component/TweetFactory";
 import { dbService } from "../firebaseInit";
 
+// type HomeProps = {
+//   userObj?: UserObj | null;
+// }
+
+// function Home({ userObj }: HomeProps) {
 function Home({ userObj }) {
   const [tweets, setTweets] = useState([]);
 
@@ -15,6 +21,7 @@ function Home({ userObj }) {
         ...document.data(),
         id: document.id,
       };
+      console.log("getTweet:", tweetObject)
       setTweets((prev) => [...prev, tweetObject]);
     });
   };

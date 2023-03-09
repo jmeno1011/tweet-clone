@@ -16,6 +16,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
   },
-  "include": ["react-app-env.d.ts", "**/*.ts","**/*.tsx"],
+  "include": ["react-app-env.d.ts", "**/*.ts","**/*.tsx", "src/routes/Home.jsx"],
   "exclude": ["node_modules"]
 }
