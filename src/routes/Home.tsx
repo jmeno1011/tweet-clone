@@ -9,7 +9,7 @@ type HomeProps = {
   userObj?: UserObj | null;
 }
 
-type TweetType = {
+export type TweetType = {
   attachmentUrl: string;
   createdAt: number;
   creatorId: string;
@@ -46,7 +46,9 @@ function Home({ userObj }: HomeProps) {
   }, []);
   return (
     <>
-      <TweetFactory userObj={userObj} />
+      {
+        userObj && <TweetFactory userObj={userObj} />
+      }
       <hr
         style={{
           width: "100%",
@@ -56,12 +58,12 @@ function Home({ userObj }: HomeProps) {
         }}
       />
       <div>
-        {tweets.map((tweet) => (
+        {tweets && tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
             userName={userObj?.displayName}
-            isOwner={tweet.creatorId === userObj?.uid}
+            isOwner={tweet?.creatorId === userObj?.uid}
           />
         ))}
       </div>

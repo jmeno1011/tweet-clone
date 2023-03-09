@@ -5,23 +5,28 @@ import { dbService, storageService } from "../firebaseInit";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TweetFactory.css";
+import { UserObj } from "./App";
 
-function TweetFactory({ userObj }) {
-  const [tweet, setTweet] = useState("");
-  const [attachment, setAttachment] = useState("");
+type TweetFactoryProps = {
+  userObj?: UserObj;
+}
 
-  const onSubmit = async (e) => {
+function TweetFactory({ userObj }: TweetFactoryProps) {
+  const [tweet, setTweet] = useState<string>("");
+  const [attachment, setAttachment] = useState<string>("");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     let attachmentUrl = "";
     if (attachment !== "") {
-      const storageRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+      const storageRef = ref(storageService, `${userObj?.uid}/${uuidv4()}`);
       await uploadString(storageRef, attachment, "data_url");
       attachmentUrl = await getDownloadURL(storageRef);
     }
     const tweetData = {
       text: tweet,
       createdAt: Date.now(),
-      creatorId: userObj.uid,
+      creatorId: userObj?.uid,
       attachmentUrl,
     };
     const collectionRef = collection(dbService, "tweets");
@@ -30,30 +35,30 @@ function TweetFactory({ userObj }) {
     setTweet("");
     setAttachment("");
   };
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
     setTweet(value);
   };
 
-  const onFileChange = (e) => {
+  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { files },
     } = e;
-    const theFile = files[0];
+    const theFile = files![0];
     const reader = new FileReader();
-    reader.onloadend = (finishedEvent) => {
+    reader.onloadend = (finishedEvent: any) => {
       const {
         currentTarget: { result },
       } = finishedEvent;
       // console.log(result);
-      setAttachment(result);
+      setAttachment(result as string);
     };
     reader.readAsDataURL(theFile);
   };
   const onClearAttachment = () => {
-    setAttachment(null);
+    setAttachment("");
   };
   return (
     <form className="tweet-form" onSubmit={onSubmit}>

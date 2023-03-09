@@ -4,3 +4,4 @@
 
 #### typescript 변경
 - npm install typescript @types/node @types/react @types/react-dom @types/jest @types/react-router-dom
+- uuid : npm i --save-dev @types/uuid 추가

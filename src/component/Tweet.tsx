@@ -2,9 +2,16 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import React, { useState } from "react";
 import { dbService, storageService } from "../firebaseInit";
+import { TweetType } from "../routes/Home";
 import "./Tweet.css";
 
-function Tweet({ tweetObj, userName, isOwner }) {
+type TweetProps = {
+  tweetObj: TweetType;
+  userName?: string | null;
+  isOwner?: boolean | null;
+}
+
+function Tweet({ tweetObj, userName, isOwner }: TweetProps) {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
   const onDeleteClick = async () => {
@@ -21,12 +28,12 @@ function Tweet({ tweetObj, userName, isOwner }) {
   const toggleEditing = () => {
     setEditing((prev) => !prev);
   };
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await updateDoc(doc(dbService, "tweets", tweetObj.id), { text: newTweet });
     setEditing(false);
   };
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;

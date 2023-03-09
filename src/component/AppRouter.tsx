@@ -20,10 +20,10 @@ function AppRouter({ isLoggedIn, userObj, refreshUser }: AppRouterProps) {
         {isLoggedIn ? (
           <Routes>
             <Route path="/" element={<Home userObj={userObj} />} />
-            {/* <Route
+            <Route
               path="/profile"
               element={<Profile userObj={userObj} refreshUser={refreshUser} />}
-            /> */}
+            />
           </Routes>
         ) : (
           <Routes>
