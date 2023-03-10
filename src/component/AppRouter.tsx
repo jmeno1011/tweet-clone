@@ -17,19 +17,16 @@ function AppRouter({ isLoggedIn, userObj, refreshUser }: AppRouterProps) {
     <>
       <div className="container">
         {isLoggedIn && <Navigation userObj={userObj} />}
-        {isLoggedIn ? (
-          <Routes>
-            <Route path="/" element={<Home userObj={userObj} />} />
-            <Route
-              path="/profile"
-              element={<Profile userObj={userObj} refreshUser={refreshUser} />}
-            />
-          </Routes>
-        ) : (
-          <Routes>
+        <Routes>
+          {isLoggedIn ? (
+            <>
+              <Route path="/" element={<Home userObj={userObj} />} />
+              <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser} />} />
+            </>
+          ) : (
             <Route path="/" element={<Auth />} />
-          </Routes>
-        )}
+          )}
+        </Routes>
       </div>
     </>
   );

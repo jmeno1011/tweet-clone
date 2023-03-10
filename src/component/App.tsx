@@ -3,14 +3,18 @@ import React, { useEffect, useState } from "react";
 import { authService } from "../firebaseInit";
 import AppRouter from "./AppRouter";
 
-export interface UserObj {
+export type UserObj = {
   displayName: string | null;
-  uid?: string;
-  updateProfile: (profile: { displayName?: string }) => Promise<void>;
+  uid: string | null;
+  updateProfile: (user: User, profile: Profile) => void;
+}
+
+interface Profile {
+  displayName?: string | null
 }
 
 function App() {
-  const [init, setInit] = useState(false);
+  const [init, setInit] = useState<boolean>(false);
   const [userObj, setUserObj] = useState<UserObj | null>(null);
 
   useEffect(() => {

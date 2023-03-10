@@ -1,4 +1,4 @@
-import { signOut } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserObj } from "../component/App";
@@ -13,7 +13,7 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
   const navigate = useNavigate();
   const [newDisplayName, setNewDisplayName] = useState("");
   const onLogoutClick = () => {
-    signOut(authService);
+    authService.signOut();
     navigate("/");
   };
 
@@ -26,10 +26,9 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newDisplayName !== "") {
-      await userObj?.updateProfile({
-        displayName: newDisplayName,
-      });
+    const user = authService.currentUser;
+    if (newDisplayName !== "" && user) {
+      await userObj?.updateProfile(user, { displayName: newDisplayName, });
       refreshUser();
     }
   };
