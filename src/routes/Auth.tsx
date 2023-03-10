@@ -6,8 +6,8 @@ import {
 } from "firebase/auth";
 import { Icon } from "@iconify/react";
 import "./Auth.css";
-import AuthForm from "../component/AuthForm";
 import { authService } from "../firebaseInit";
+import AuthForm from "../component/AuthForm";
 
 function Auth() {
   const onSocialClick = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

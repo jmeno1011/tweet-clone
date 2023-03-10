@@ -12,7 +12,7 @@ function AuthForm() {
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
 
-  const onChange = (e) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
@@ -22,7 +22,7 @@ function AuthForm() {
       setPassword(value);
     }
   };
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newAccount) {
       // create account
