@@ -5,7 +5,7 @@ import "./Navigation.css";
 import { UserObj } from "../types";
 
 type NavigationProps = {
-  userObj?: UserObj | null;
+  userObj: UserObj | null;
 }
 
 function Navigation({ userObj }: NavigationProps) {

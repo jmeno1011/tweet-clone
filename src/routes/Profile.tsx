@@ -5,7 +5,7 @@ import { authService } from "../firebaseInit";
 import { UserObj } from "../types";
 
 type ProfileProps = {
-  userObj?: UserObj | null;
+  userObj: UserObj | null;
   refreshUser: () => void;
 }
 

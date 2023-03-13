@@ -8,7 +8,7 @@ import { UserObj } from "../types";
 
 type AppRouterProps = {
   isLoggedIn: boolean;
-  userObj?: UserObj | null;
+  userObj: UserObj | null;
   refreshUser: () => void;
 }
 

@@ -8,7 +8,7 @@ import "./TweetFactory.css";
 import { UserObj } from "../types";
 
 type TweetFactoryProps = {
-  userObj?: UserObj;
+  userObj: UserObj;
 }
 
 function TweetFactory({ userObj }: TweetFactoryProps) {
@@ -19,14 +19,14 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
     e.preventDefault();
     let attachmentUrl = "";
     if (attachment !== "") {
-      const storageRef = ref(storageService, `${userObj?.uid}/${uuidv4()}`);
+      const storageRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
       await uploadString(storageRef, attachment, "data_url");
       attachmentUrl = await getDownloadURL(storageRef);
     }
     const tweetData = {
       text: tweet,
       createdAt: Date.now(),
-      creatorId: userObj?.uid,
+      creatorId: userObj.uid,
       attachmentUrl,
     };
     const collectionRef = collection(dbService, "tweets");
@@ -52,7 +52,6 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
       const {
         currentTarget: { result },
       } = finishedEvent;
-      // console.log(result);
       setAttachment(result as string);
     };
     reader.readAsDataURL(theFile);
