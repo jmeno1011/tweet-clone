@@ -2,7 +2,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import React, { useState } from "react";
 import { dbService, storageService } from "../firebaseInit";
-import { TweetType } from "../routes/Home";
+import { TweetType } from "../types";
 import "./Tweet.css";
 
 type TweetProps = {

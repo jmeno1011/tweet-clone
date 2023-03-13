@@ -1,8 +1,8 @@
 import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserObj } from "../component/App";
 import { authService } from "../firebaseInit";
+import { UserObj } from "../types";
 
 type ProfileProps = {
   userObj?: UserObj | null;

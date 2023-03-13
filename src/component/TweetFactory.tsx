@@ -5,7 +5,7 @@ import { dbService, storageService } from "../firebaseInit";
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TweetFactory.css";
-import { UserObj } from "./App";
+import { UserObj } from "../types";
 
 type TweetFactoryProps = {
   userObj?: UserObj;

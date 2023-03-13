@@ -34,3 +34,6 @@
 #### App.tsx 
 - init : program 준비 완료 확인\
   - false면 로딩 표시 , true면 라우트 보여주기
+
+#### TweetFactory.tsx
+- 트윗을 올리는 Form

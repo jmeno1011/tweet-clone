@@ -1,20 +1,12 @@
 import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { UserObj } from "../component/App";
 import Tweet from "../component/Tweet";
 import TweetFactory from "../component/TweetFactory";
 import { dbService } from "../firebaseInit";
+import { TweetType, UserObj } from "../types";
 
 type HomeProps = {
   userObj?: UserObj | null;
-}
-
-export type TweetType = {
-  attachmentUrl: string;
-  createdAt: number;
-  creatorId: string;
-  id: string;
-  text: string;
 }
 
 function Home({ userObj }: HomeProps) {
@@ -28,7 +20,6 @@ function Home({ userObj }: HomeProps) {
         ...document.data(),
         id: document.id,
       };
-      console.log("getTweet:", tweetObject)
       // setTweets(tweets.concat(tweetObject));
       setTweets((prev) => [...prev, tweetObject]);
     });
@@ -58,14 +49,14 @@ function Home({ userObj }: HomeProps) {
         }}
       />
       <div>
-        {tweets && tweets.map((tweet) => (
+        {/* {tweets && tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
             userName={userObj?.displayName}
             isOwner={tweet?.creatorId === userObj?.uid}
           />
-        ))}
+        ))} */}
       </div>
     </>
   );

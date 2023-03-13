@@ -2,10 +2,10 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import React from "react";
 import "./Navigation.css";
-import { UserObj } from "./App";
+import { UserObj } from "../types";
 
 type NavigationProps = {
-  userObj?: UserObj|null;
+  userObj?: UserObj | null;
 }
 
 function Navigation({ userObj }: NavigationProps) {
