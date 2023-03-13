@@ -21,6 +21,7 @@ function App() {
     // firebase 스스로 계정 변화 확인함
     authService.onAuthStateChanged((user: User | null) => {
       if (user) {
+        console.log(user);
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
@@ -47,11 +48,12 @@ function App() {
   return (
     <>
       {init ? (
-        <AppRouter
-          isLoggedIn={Boolean(userObj)}
-          userObj={userObj}
-          refreshUser={refreshUser}
-        />
+        <div>asd</div>
+        // <AppRouter
+        //   isLoggedIn={Boolean(userObj)}
+        //   userObj={userObj}
+        //   refreshUser={refreshUser}
+        // />
       ) : (
         "Initializing..."
       )}
