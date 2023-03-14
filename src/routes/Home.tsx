@@ -1,4 +1,4 @@
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Tweet from "../component/Tweet";
 import TweetFactory from "../component/TweetFactory";
@@ -12,29 +12,20 @@ type HomeProps = {
 function Home({ userObj }: HomeProps) {
   const [tweets, setTweets] = useState<TweetType[]>([]);
 
-  const getTweet = async () => {
-    const collectionRef = collection(dbService, "tweets");
-    const dbTweets = await getDocs(collectionRef);
-    dbTweets.forEach((document: any) => {
-      const tweetObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      // setTweets(tweets.concat(tweetObject));
-      setTweets((prev) => [...prev, tweetObject]);
-    });
-  };
-
   useEffect(() => {
-    getTweet();
-    onSnapshot(collection(dbService, "tweets"), (document) => {
-      const tweetArray: TweetType[] = document.docs.map((doc: any) => ({
+    const collectionRef = collection(dbService, "tweets");
+    const unsubscribe = onSnapshot(collectionRef, (querySnapshot) => {
+      const tweetArray: TweetType[] = querySnapshot.docs.map((doc: QueryDocumentSnapshot) => ({
         id: doc.id,
         ...doc.data(),
-      }));
-      setTweets(tweetArray);
+      } as TweetType));
+      setTweets((prev) => [...prev, ...tweetArray]);
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
+
   return (
     <>
       {
@@ -49,14 +40,14 @@ function Home({ userObj }: HomeProps) {
         }}
       />
       <div>
-        {/* {tweets && tweets.map((tweet) => (
+        {tweets && tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
-            userName={userObj?.displayName}
-            isOwner={tweet?.creatorId === userObj?.uid}
+            userName={userObj!.displayName}
+            isOwner={tweet.creatorId === userObj!.uid}
           />
-        ))} */}
+        ))}
       </div>
     </>
   );

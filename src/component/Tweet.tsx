@@ -7,8 +7,8 @@ import "./Tweet.css";
 
 type TweetProps = {
   tweetObj: TweetType;
-  userName: string | null;
-  isOwner: boolean | null;
+  userName?: string | null;
+  isOwner: boolean;
 }
 
 function Tweet({ tweetObj, userName, isOwner }: TweetProps) {
