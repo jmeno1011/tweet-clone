@@ -1,4 +1,4 @@
-import { User } from "firebase/auth";
+import { User, updateProfile } from "firebase/auth";
 
 export interface TweetType {
   attachmentUrl: string;
@@ -18,4 +18,3 @@ export interface UserObj {
   uid: string | null;
   updateProfile: (user: User, profile: Profile) => Promise<void>;
 }
-

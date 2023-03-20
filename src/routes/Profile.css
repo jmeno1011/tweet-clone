@@ -1,0 +1,10 @@
+.profile-container{
+  border: 1px solid #536471;
+  border-top: 0;
+}
+.profile-header{
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
