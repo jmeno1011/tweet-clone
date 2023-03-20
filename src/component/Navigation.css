@@ -17,7 +17,7 @@
 }
 
 .nav-ul > li {
-  padding: 8px;
+  padding-top: 0.5rem;
   width: 50%;
   cursor: pointer;
 }
@@ -26,11 +26,17 @@
   background-color: rgba(231, 233, 234, 0.1);
 }
 
-.nav-ul li a{
+.nav-ul a{
+  padding-bottom: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* .nav-ul svg{
+  padding-bottom: 5px;
+} */
+
 .selected {
   border-bottom: 5px solid dodgerblue;
 }

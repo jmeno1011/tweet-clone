@@ -15,6 +15,9 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "jsx": "preserve",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
   },
   "include": ["react-app-env.d.ts", "**/*.ts","**/*.tsx"],
   "exclude": ["node_modules"]
