@@ -1,8 +1,7 @@
 .tweet-form {
-  margin: 4px;
-  margin-top: 8px;
   padding: 8px;
   border: 1px solid #536471;
+  border-top: 0;
 }
 .form-input {
   padding: 16px 8px;

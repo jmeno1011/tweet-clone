@@ -10,21 +10,24 @@ type NavigationProps = {
 
 function Navigation({ userObj }: NavigationProps) {
   return (
-    <nav className="nav-nav">
-      <ul className="nav-ul">
-        <li>
-          <Link to={"/"}>
-            <Icon icon="ic:baseline-home" />
-          </Link>
-        </li>
-        <li>
-          {/* <Link to={"/profile"}>{userObj?.displayName}의 Profile</Link> */}
-          <Link to={"/profile"}>
-            <Icon icon="iconoir:profile-circled" />
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="nav-container">
+      <h3 className="nav-title">Home</h3>
+      <nav className="nav-nav">
+        <ul className="nav-ul">
+          <li>
+            <Link to={"/"}>
+              <Icon icon="ic:baseline-home" className="selected" />
+            </Link>
+          </li>
+          <li>
+            {/* <Link to={"/profile"}>{userObj?.displayName}의 Profile</Link> */}
+            <Link to={"/profile"}>
+              <Icon icon="iconoir:profile-circled" />
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }
 

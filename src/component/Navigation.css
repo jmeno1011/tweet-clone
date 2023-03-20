@@ -1,18 +1,36 @@
+.nav-container{
+  border-left: 1px solid #536471;
+  border-right: 1px solid #536471;
+}
+.nav-title{
+  padding: 1rem ;
+  color: #fff;
+}
 .nav-nav {
   max-width: 320px;
-  margin: 0 auto;
 }
+
 .nav-ul {
   display: flex;
-  gap: 8px;
   font-size: 2rem;
   border-bottom: 1px solid #536471;
 }
+
 .nav-ul > li {
   padding: 8px;
-  border-radius: 50%;
+  width: 50%;
   cursor: pointer;
 }
+
 .nav-ul > li:hover {
   background-color: rgba(231, 233, 234, 0.1);
+}
+
+.nav-ul li a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selected {
+  border-bottom: 5px solid dodgerblue;
 }
