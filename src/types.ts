@@ -1,5 +1,3 @@
-import { User, updateProfile } from "firebase/auth";
-
 export interface TweetType {
   attachmentUrl: string;
   createdAt: number;
@@ -8,12 +6,8 @@ export interface TweetType {
   id: string;
 }
 
-interface Profile {
-  displayName?: string | null;
-  photoURL?: string | null;
-}
-
 export interface UserObj {
   displayName: string | null;
   uid: string | null;
+  email: string;
 }

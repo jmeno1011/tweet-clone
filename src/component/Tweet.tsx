@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import React, { useState } from "react";
@@ -8,10 +9,11 @@ import "./Tweet.css";
 type TweetProps = {
   tweetObj: TweetType;
   userName?: string | null;
+  email:string;
   isOwner: boolean;
 }
 
-function Tweet({ tweetObj, userName, isOwner }: TweetProps) {
+function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
   const onDeleteClick = async () => {
@@ -57,7 +59,10 @@ function Tweet({ tweetObj, userName, isOwner }: TweetProps) {
         </>
       ) : (
         <div className="tweet">
-          <h3>@name : {userName}</h3>
+          <div className="tweet-name">
+          <h3>{userName}</h3>
+          <span>@{email.split("@")[0]}</span>
+          </div>
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && (
             <img
@@ -68,10 +73,14 @@ function Tweet({ tweetObj, userName, isOwner }: TweetProps) {
             />
           )}
           {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete Tweet</button>
-              <button onClick={toggleEditing}>Edit Tweet</button>
-            </>
+            <div className="tweet-btn-group">
+              <button className="tweet-btn" onClick={toggleEditing}>
+                <Icon icon="material-symbols:edit-outline" />
+              </button>
+              <button className="tweet-btn" onClick={onDeleteClick}>
+                <Icon icon="material-symbols:delete-outline-rounded" />
+              </button>
+            </div>
           )}
         </div>
       )}

@@ -11,7 +11,6 @@ import AuthForm from "../component/AuthForm";
 
 function Auth() {
   const onSocialClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log(e.currentTarget.name);
     const {
       currentTarget: { name },
     } = e;
@@ -23,7 +22,7 @@ function Auth() {
     }
     if (provider) {
       const result = await signInWithPopup(authService, provider);
-      console.log(result);
+      // console.log(result);
     }
   };
 

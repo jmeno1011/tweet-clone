@@ -1,4 +1,4 @@
-import { updateProfile, User } from "firebase/auth";
+import { User } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { authService } from "../firebaseInit";
 import { UserObj } from "../types";
@@ -12,9 +12,11 @@ function App() {
     // firebase 스스로 계정 변화 확인함
     authService.onAuthStateChanged((user: User | null) => {
       if (user) {
+        console.log(user);
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
+          email: user.email
         });
       } else {
         setUserObj(null);
@@ -29,6 +31,7 @@ function App() {
       setUserObj({
         displayName: user.displayName,
         uid: user.uid,
+        email: user.email
       });
     }
   };

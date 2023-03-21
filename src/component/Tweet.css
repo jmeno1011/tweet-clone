@@ -4,10 +4,35 @@
   color: #fff;
   margin-bottom: 4px;
 }
-.tweet > h3 {
+.tweet-name{
+  display: flex;
+  align-items: baseline;
+}
+.tweet-name h3{
+  margin-right: 0.25rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.25rem;
+}
+.tweet-name span{
+  font-size: 0.875rem;
+  color: gray;
+  white-space: inherit;
 }
 .tweet > h4 {
   font-size: 0.875rem;
+}
+.tweet-btn-group{
+  display: flex;
+  justify-content: flex-end;
+}
+.tweet-btn{
+  margin: 0 0.25rem;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  font-size: 1.5rem;
 }
