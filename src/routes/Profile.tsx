@@ -1,6 +1,5 @@
 import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { authService } from "../firebaseInit";
 import { UserObj } from "../types";
 import "./Profile.css";
@@ -11,14 +10,8 @@ type ProfileProps = {
 }
 
 function Profile({ userObj, refreshUser }: ProfileProps) {
-  const navigate = useNavigate();
   const [newDisplayName, setNewDisplayName] = useState<string>("");
   const [editOpen, setEditOpen] = useState<boolean>(false);
-
-  const onLogoutClick = () => {
-    authService.signOut();
-    navigate("/");
-  };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -74,7 +67,6 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
             </div>
         }
       </form>
-      {/* <button onClick={onLogoutClick}>Log Out</button> */}
     </div>
   );
 }
