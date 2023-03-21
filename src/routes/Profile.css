@@ -1,10 +1,41 @@
 .profile-container{
   border: 1px solid #536471;
   border-top: 0;
+  color: #fff;
 }
 .profile-header{
-  padding: 8px;
+  padding: 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
   color: #fff;
+}
+.display-name{
+  padding: 0.5rem;
+}
+.profile-btn{
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #536471;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 1rem;
+}
+.profile-btn:hover{
+  background-color: #8394a0;
+  color: black;
+}
+.profile-edit-row{
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-edit-input{
+  padding: 0.25rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid silver;
 }

@@ -11,7 +11,8 @@ type ProfileProps = {
 
 function Profile({ userObj, refreshUser }: ProfileProps) {
   const navigate = useNavigate();
-  const [newDisplayName, setNewDisplayName] = useState("");
+  const [newDisplayName, setNewDisplayName] = useState<string>("");
+  const [editOpen, setEditOpen] = useState<boolean>(false);
   const onLogoutClick = () => {
     authService.signOut();
     navigate("/");
@@ -23,6 +24,12 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
     } = e;
     setNewDisplayName(value);
   };
+
+  const editCancel = (e: React.MouseEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setNewDisplayName("");
+    setEditOpen(!editOpen);
+  }
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,16 +46,32 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
       <form onSubmit={onSubmit}>
         <header className="profile-header">
           <h3>Edit Your Profile</h3>
-          <input type="submit" value={"Update Profile"} />
+          {
+            !editOpen ?
+              <input className="profile-btn" type="button" value={"Edit"} onClick={() => setEditOpen(!editOpen)} />
+              :
+              <>
+                <input className="profile-btn" type="button" value={"Cancel"} onClick={editCancel} />
+              </>
+          }
         </header>
-        <input
-          type={"text"}
-          placeholder="Display Name"
-          onChange={onChange}
-          value={newDisplayName || ""}
-        />
+        {
+          !editOpen ?
+            <h5 className="display-name">{userObj.displayName}님</h5>
+            :
+            <div className="profile-edit-row">
+              <input
+                className="profile-edit-input"
+                type={"text"}
+                placeholder="Display Name"
+                onChange={onChange}
+                value={newDisplayName || ""}
+              />
+              <input className="profile-btn" type="submit" value={"Update Profile"} />
+            </div>
+        }
       </form>
-      <button onClick={onLogoutClick}>Log Out</button>
+      {/* <button onClick={onLogoutClick}>Log Out</button> */}
     </div>
   );
 }
