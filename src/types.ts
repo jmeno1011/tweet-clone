@@ -16,5 +16,4 @@ interface Profile {
 export interface UserObj {
   displayName: string | null;
   uid: string | null;
-  updateProfile: (user: User, profile: Profile) => Promise<void>;
 }

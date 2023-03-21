@@ -1,3 +1,4 @@
+import { updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../firebaseInit";
@@ -13,6 +14,7 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
   const navigate = useNavigate();
   const [newDisplayName, setNewDisplayName] = useState<string>("");
   const [editOpen, setEditOpen] = useState<boolean>(false);
+
   const onLogoutClick = () => {
     authService.signOut();
     navigate("/");
@@ -34,10 +36,11 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = authService.currentUser;
-    console.log(user);
     if (newDisplayName !== "" && user) {
-      await userObj.updateProfile(user, { displayName: newDisplayName, });
+      await updateProfile(user, { displayName: newDisplayName });
       refreshUser();
+      setNewDisplayName("");
+      setEditOpen(!editOpen);
     }
   };
 
@@ -57,7 +60,7 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
         </header>
         {
           !editOpen ?
-            <h5 className="display-name">{userObj.displayName}님</h5>
+            <h5 className="display-name"><b>{userObj.displayName}</b>님</h5>
             :
             <div className="profile-edit-row">
               <input

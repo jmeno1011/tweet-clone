@@ -15,7 +15,6 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
-          updateProfile: (profile) => updateProfile(user, profile),
         });
       } else {
         setUserObj(null);
@@ -30,7 +29,6 @@ function App() {
       setUserObj({
         displayName: user.displayName,
         uid: user.uid,
-        updateProfile: (profile) => updateProfile(user, profile),
       });
     }
   };
