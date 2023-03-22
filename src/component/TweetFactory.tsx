@@ -86,9 +86,9 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
         <input className="tweet-btn" type={"submit"} value="tweet" />
       </div>
       {attachment && (
-        <div>
-          <img src={attachment} width="50px" height="50px" alt="" />
-          <button onClick={onClearAttachment}>Clear</button>
+        <div className="tweet-photo">
+          <img src={attachment} width="150" height="150" alt="" />
+          <button onClick={onClearAttachment}>X</button>
         </div>
       )}
     </form>

@@ -42,3 +42,27 @@
   color: #fff;
   cursor: pointer;
 }
+
+.tweet-photo{
+  padding: 0.5rem;
+  position: relative;  
+}
+
+.tweet-photo img{
+  border-radius: 1rem;
+}
+
+.tweet-photo button{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  border-radius: 50%;
+  background-color: ivory;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}

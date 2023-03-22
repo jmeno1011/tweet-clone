@@ -49,6 +49,9 @@ a {
 
 footer {
   padding: 16px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   color: #fff;
