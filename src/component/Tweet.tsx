@@ -67,8 +67,8 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
           {tweetObj.attachmentUrl && (
             <img
               src={tweetObj.attachmentUrl}
-              height="50px"
-              width={"50px"}
+              height="100px"
+              width="100px"
               alt=""
             />
           )}

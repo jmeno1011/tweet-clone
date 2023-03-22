@@ -20,6 +20,10 @@
 }
 .tweet > h4 {
   font-size: 0.875rem;
+  padding: 0.5rem 0;
+}
+.tweet img{
+  border-radius: 1rem;
 }
 .tweet-btn-group{
   display: flex;
