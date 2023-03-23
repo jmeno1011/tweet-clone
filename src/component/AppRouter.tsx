@@ -13,6 +13,7 @@ type AppRouterProps = {
 }
 
 function AppRouter({ isLoggedIn, userObj, refreshUser }: AppRouterProps) {
+  console.log(isLoggedIn);
   return (
     <>
       <div className="container">
