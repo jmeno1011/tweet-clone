@@ -9,7 +9,7 @@ import "./Tweet.css";
 type TweetProps = {
   tweetObj: TweetType;
   userName?: string | null;
-  email:string;
+  email: string;
   isOwner: boolean;
 }
 
@@ -30,17 +30,21 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
   const toggleEditing = () => {
     setEditing((prev) => !prev);
   };
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await updateDoc(doc(dbService, "tweets", tweetObj.id), { text: newTweet });
     setEditing(false);
   };
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
     setNewTweet(value);
   };
+
+  console.log(tweetObj.createdAt);
   return (
     <div>
       {editing ? (
@@ -60,8 +64,9 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
       ) : (
         <div className="tweet">
           <div className="tweet-name">
-          <h3>{userName}</h3>
-          <span>@{email.split("@")[0]}</span>
+            <h3>{userName}</h3>
+            <span>@{email.split("@")[0]}</span>
+            <span>● {new Date(tweetObj.createdAt).toISOString().split("T")[0]}</span>
           </div>
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && (

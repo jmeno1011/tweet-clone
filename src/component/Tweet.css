@@ -9,11 +9,12 @@
   align-items: baseline;
 }
 .tweet-name h3{
-  margin-right: 0.25rem;
   font-weight: bold;
   font-size: 1.25rem;
 }
 .tweet-name span{
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
   font-size: 0.875rem;
   color: gray;
   white-space: inherit;
