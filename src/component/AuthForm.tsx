@@ -6,10 +6,14 @@ import React, { useState } from "react";
 import { authService } from "../firebaseInit";
 import "./AuthForm.css";
 
-function AuthForm() {
+interface AuthFormProps {
+  accountToggle: boolean;
+  setAccountToggle: (accountToggle: boolean) => void;
+}
+
+function AuthForm({ accountToggle, setAccountToggle }: AuthFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +28,7 @@ function AuthForm() {
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newAccount) {
+    if (accountToggle) {
       // create account
       createUserWithEmailAndPassword(authService, email, password)
         .then((userCredentail) => {
@@ -51,7 +55,7 @@ function AuthForm() {
         });
     }
   };
-  const toggleAccount = () => setNewAccount((prev) => !prev);
+  // const toggleAccount = () => setAccountToggle(!prev);
 
   return (
     <>
@@ -77,12 +81,12 @@ function AuthForm() {
         <input
           className="formBtn"
           type={"submit"}
-          value={newAccount ? "Create Account" : "Sign In"}
+          value={accountToggle ? "Create Account" : "Sign In"}
         />
         {error ? <span>{error}</span> : null}
       </form>
-      <span className="toggle-link" onClick={toggleAccount}>
-        {newAccount ? "Sign In" : "Create Account"}
+      <span className="toggle-link" onClick={() => setAccountToggle(!accountToggle)}>
+        {accountToggle ? "Sign In" : "Create Account"}
       </span>
     </>
   );
