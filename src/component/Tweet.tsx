@@ -49,17 +49,24 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
     <div>
       {editing ? (
         <>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="tweet">
             <input
+              className="edit-tweet"
               placeholder="Edit your tweet"
               type={"text"}
               value={newTweet}
               onChange={onChange}
               required
             />
-            <input type={"submit"} value="Update Tweet" />
+            <div className="tweet-btn-group">
+              <button className="tweet-btn" type="submit">
+                <Icon icon="material-symbols:check-circle-outline" />
+              </button>
+              <button className="tweet-btn" onClick={toggleEditing}>
+                <Icon icon="material-symbols:cancel-outline" />
+              </button>
+            </div>
           </form>
-          <button onClick={toggleEditing}>Cancel</button>
         </>
       ) : (
         <div className="tweet">

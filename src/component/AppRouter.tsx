@@ -13,23 +13,20 @@ type AppRouterProps = {
 }
 
 function AppRouter({ isLoggedIn, userObj, refreshUser }: AppRouterProps) {
-  console.log(isLoggedIn);
   return (
-    <>
-      <div className="container">
-        {isLoggedIn && <Navigation userObj={userObj} />}
-        <Routes>
-          {isLoggedIn ? (
-            <>
-              <Route path="/" element={<Home userObj={userObj} />} />
-              <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser} />} />
-            </>
-          ) : (
-            <Route path="/" element={<Auth />} />
-          )}
-        </Routes>
-      </div>
-    </>
+    <div className="container">
+      {isLoggedIn && <Navigation userObj={userObj} />}
+      <Routes>
+        {isLoggedIn ? (
+          <>
+            <Route path="/" element={<Home userObj={userObj} />} />
+            <Route path="/profile" element={<Profile userObj={userObj} refreshUser={refreshUser} />} />
+          </>
+        ) : (
+          <Route path="/" element={<Auth />} />
+        )}
+      </Routes>
+    </div>
   );
 }
 
