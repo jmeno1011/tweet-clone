@@ -39,7 +39,7 @@ a {
 
 .container {
   min-height: 100vh;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   width: 100%;
   max-width: 320px;
   display: flex;
@@ -55,7 +55,7 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   color: #fff;
 }
