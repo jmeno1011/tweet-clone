@@ -19,6 +19,13 @@ function Home({ userObj }: HomeProps) {
         id: doc.id,
         ...doc.data(),
       } as TweetType));
+      tweetArray.sort((a, b) => {
+        if (a.createdAt === b.createdAt) {
+          return 0;
+        } else {
+          return a.createdAt > b.createdAt ? -1 : 1
+        }
+      })
       setTweets((prev) => [...prev, ...tweetArray]);
     });
     return () => {

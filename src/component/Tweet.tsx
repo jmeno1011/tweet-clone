@@ -44,7 +44,6 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
     setNewTweet(value);
   };
 
-  console.log(tweetObj.createdAt);
   return (
     <div>
       {editing ? (
