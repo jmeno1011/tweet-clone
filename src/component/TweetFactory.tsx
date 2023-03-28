@@ -20,10 +20,13 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
     let attachmentUrl = "";
     if (attachment !== "") {
       const storageRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+      console.log("storageRef:: ", storageRef);
       await uploadString(storageRef, attachment, "data_url");
       attachmentUrl = await getDownloadURL(storageRef);
     }
     const tweetData = {
+      nickname: userObj.displayName,
+      email: userObj.email,
       text: tweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,

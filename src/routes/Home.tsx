@@ -43,8 +43,6 @@ function Home({ userObj }: HomeProps) {
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
-            userName={userObj!.displayName}
-            email={userObj.email}
             isOwner={tweet.creatorId === userObj!.uid}
           />
         ))}

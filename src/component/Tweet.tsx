@@ -8,12 +8,10 @@ import "./Tweet.css";
 
 type TweetProps = {
   tweetObj: TweetType;
-  userName?: string | null;
-  email: string;
   isOwner: boolean;
 }
 
-function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
+function Tweet({ tweetObj, isOwner }: TweetProps) {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
   const onDeleteClick = async () => {
@@ -44,6 +42,9 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
     setNewTweet(value);
   };
 
+  console.log(tweetObj.nickname);
+  
+  
   return (
     <div>
       {editing ? (
@@ -70,8 +71,8 @@ function Tweet({ tweetObj, userName, email, isOwner }: TweetProps) {
       ) : (
         <div className="tweet">
           <div className="tweet-name">
-            <h3>{userName}</h3>
-            <span>@{email.split("@")[0]}</span>
+            <h3>{tweetObj.nickname === null ? "unknown" :tweetObj.nickname }</h3>
+            <span>@{tweetObj.email.split("@")[0]}</span>
             <span>● {new Date(tweetObj.createdAt).toISOString().split("T")[0]}</span>
           </div>
           <h4>{tweetObj.text}</h4>

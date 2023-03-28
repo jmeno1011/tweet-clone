@@ -3,6 +3,8 @@ export interface TweetType {
   createdAt: number;
   creatorId: string;
   text: string;
+  email: string;
+  nickname: string;
   id: string;
 }
 

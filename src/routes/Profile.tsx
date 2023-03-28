@@ -53,7 +53,11 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
         </header>
         {
           !editOpen ?
-            <h5 className="display-name"><b>{userObj.displayName}</b>님</h5>
+            (
+              userObj.displayName === null ?
+                <h5 className="display-name"><b>수정을 통해 닉네임을 설정해주세요</b></h5> :
+                <h5 className="display-name"><b>{userObj.displayName}</b>님</h5>
+            )
             :
             <div className="profile-edit-row">
               <input
