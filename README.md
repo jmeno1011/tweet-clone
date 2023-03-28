@@ -37,3 +37,7 @@
 
 #### TweetFactory.tsx
 - 트윗을 올리는 Form
+
+#### .env
+- local : REACT_APP_BASENAME=/
+- github : REACT_APP_BASENAME=/tweet-clone

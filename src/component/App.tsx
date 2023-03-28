@@ -9,6 +9,8 @@ function App() {
   const [userObj, setUserObj] = useState<UserObj | null>(null);
 
   useEffect(() => {
+    console.log("authService.currentUser: ",authService.currentUser)
+    
     // firebase 스스로 계정 변화 확인함
     authService.onAuthStateChanged((user: User | null) => {
       if (user) {
