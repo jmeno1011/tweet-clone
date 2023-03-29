@@ -7,6 +7,7 @@
   padding: 16px 8px;
 }
 .form-input > input {
+  width: 100%;
   background-color: transparent;
   border: 0;
   outline: 0;

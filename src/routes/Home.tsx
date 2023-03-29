@@ -26,7 +26,7 @@ function Home({ userObj }: HomeProps) {
           return a.createdAt > b.createdAt ? -1 : 1
         }
       })
-      setTweets((prev) => [...prev, ...tweetArray]);
+      setTweets(tweetArray);
     });
     return () => {
       unsubscribe();
