@@ -1,4 +1,4 @@
-import { collection, getDocs, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, QueryDocumentSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Tweet from "../component/Tweet";
 import TweetFactory from "../component/TweetFactory";

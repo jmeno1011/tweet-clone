@@ -25,7 +25,7 @@ function Navigation({ userObj }: NavigationProps) {
         <h3>Home</h3>
         <button onClick={onLogoutClick}>Log Out</button>
       </div>
-      <nav className="nav-nav">
+      <nav>
         <ul className="nav-ul">
           <li>
             <Link to={"/"} className={pathname === "/" ? "selected" : ""} >

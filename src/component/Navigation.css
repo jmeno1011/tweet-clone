@@ -22,9 +22,6 @@
 .nav-title button:hover{
   text-decoration: underline;
 }
-.nav-nav {
-  max-width: 320px;
-}
 
 .nav-ul {
   display: flex;

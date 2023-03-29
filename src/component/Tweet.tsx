@@ -41,9 +41,6 @@ function Tweet({ tweetObj, isOwner }: TweetProps) {
     } = e;
     setNewTweet(value);
   };
-
-  console.log(tweetObj.nickname);
-  
   
   return (
     <div>
@@ -73,7 +70,7 @@ function Tweet({ tweetObj, isOwner }: TweetProps) {
           <div className="tweet-name">
             <h3>{tweetObj.nickname === null ? "unknown" :tweetObj.nickname }</h3>
             <span>@{tweetObj.email.split("@")[0]}</span>
-            <span>● {new Date(tweetObj.createdAt).toISOString().split("T")[0]}</span>
+            <span>・ {new Date(tweetObj.createdAt).toISOString().split("T")[0]}</span>
           </div>
           <h4>{tweetObj.text}</h4>
           {tweetObj.attachmentUrl && (
