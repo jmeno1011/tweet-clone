@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./TweetFactory.css";
 import { UserObj } from "../types";
+import { ReactComponent as Person } from "../assets/Person.svg"
 
 type TweetFactoryProps = {
   userObj: UserObj;
@@ -63,40 +64,40 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
     setAttachment("");
   };
   return (
-    <div>
-      <div>image</div>
-    <form className="tweet-form" onSubmit={onSubmit}>
-      <div className="form-input">
-        <input
-          type={"text"}
-          placeholder="what's on your mind"
-          maxLength={120}
-          onChange={onChange}
-          value={tweet}
-        />
-      </div>
-      <div className="form-footer">
-        <div>
-          <label htmlFor="upload-file" className="upload-btn">
-            <Icon icon="ic:outline-broken-image" />
-          </label>
+    <div className="factory">
+      <Person />
+      <form className="tweet-form" onSubmit={onSubmit}>
+        <div className="form-input">
           <input
-            type={"file"}
-            id="upload-file"
-            accept="image/*"
-            onChange={onFileChange}
-            style={{ display: "none" }}
+            type={"text"}
+            placeholder="what's on your mind"
+            maxLength={120}
+            onChange={onChange}
+            value={tweet}
           />
         </div>
-        <input className="tweet-btn" type={"submit"} value="tweet" />
-      </div>
-      {attachment && (
-        <div className="tweet-photo">
-          <img src={attachment} width="150" height="150" alt="" />
-          <button onClick={onClearAttachment}>X</button>
+        <div className="form-footer">
+          <div>
+            <label htmlFor="upload-file" className="upload-btn">
+              <Icon icon="ic:outline-broken-image" />
+            </label>
+            <input
+              type={"file"}
+              id="upload-file"
+              accept="image/*"
+              onChange={onFileChange}
+              style={{ display: "none" }}
+            />
+          </div>
+          <input className="tweet-btn" type={"submit"} value="tweet" />
         </div>
-      )}
-    </form>
+        {attachment && (
+          <div className="tweet-photo">
+            <img src={attachment} width="150" height="150" alt="" />
+            <button onClick={onClearAttachment}>X</button>
+          </div>
+        )}
+      </form>
     </div>
   );
 }

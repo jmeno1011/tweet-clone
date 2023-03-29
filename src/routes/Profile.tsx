@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { authService } from "../firebaseInit";
 import { UserObj } from "../types";
 import "./Profile.css";
+import { ReactComponent as Person } from "../assets/Person.svg"
 
 type ProfileProps = {
   userObj?: UserObj | null;
@@ -56,7 +57,10 @@ function Profile({ userObj, refreshUser }: ProfileProps) {
             (
               userObj.displayName === null ?
                 <h5 className="display-name"><b>수정을 통해 닉네임을 설정해주세요</b></h5> :
-                <h5 className="display-name"><b>{userObj.displayName}</b>님</h5>
+                <div className="avartar">
+                  <Person />
+                  <h5 className="display-name"><b>{userObj.displayName}</b>님</h5>
+                </div>
             )
             :
             <div className="profile-edit-row">

@@ -39,3 +39,14 @@
   border: 0;
   border-bottom: 1px solid silver;
 }
+.avartar{
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.avartar svg{
+  width: 32px;
+  height: 32px;
+  color: #fff;
+}
