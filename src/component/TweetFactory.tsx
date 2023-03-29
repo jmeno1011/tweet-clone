@@ -63,6 +63,8 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
     setAttachment("");
   };
   return (
+    <div>
+      <div>image</div>
     <form className="tweet-form" onSubmit={onSubmit}>
       <div className="form-input">
         <input
@@ -95,6 +97,7 @@ function TweetFactory({ userObj }: TweetFactoryProps) {
         </div>
       )}
     </form>
+    </div>
   );
 }
 
