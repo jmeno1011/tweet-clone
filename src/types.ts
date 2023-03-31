@@ -12,4 +12,5 @@ export interface UserObj {
   displayName: string | null;
   uid: string | null;
   email: string;
+  photoURL: string | null;
 }

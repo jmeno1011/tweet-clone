@@ -17,6 +17,7 @@ function App() {
         console.log(user);
         setUserObj({
           displayName: user.displayName,
+          photoURL: user.photoURL,
           uid: user.uid,
           email: user.email
         });
@@ -32,11 +33,14 @@ function App() {
     if (user) {
       setUserObj({
         displayName: user.displayName,
+        photoURL: user.photoURL,
         uid: user.uid,
         email: user.email
       });
     }
   };
+
+  console.log("userObj:", userObj);
 
   return (
     <>
